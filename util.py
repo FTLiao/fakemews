@@ -389,4 +389,20 @@ def plot_tsne_scattering(X, Y, dic_labels, title):
     ax.grid(True)
     plt.savefig(title+'.png')
     plt.show()
-    
+
+# Plotting bar chart for a given text
+def plot_bar_stance(Y, title = '', dic_stance = label_ref_rev):
+    x = np.arange(4)
+    fig, ax = plt.subplots(figsize=(10,10))
+    #ax.yaxis.set_major_formatter(formatter)
+    plt.bar(x, Y, color='blue', alpha=0.5)
+    plt.xticks(x, (dic_stance[0], dic_stance[1], dic_stance[2], dic_stance[3]))
+    ax.set_title(title, fontsize='x-large')
+    #ax.set_xlabel('',fontsize='x-large')
+    ax.set_ylabel('Probability', fontsize='x-large')
+    ax.tick_params(axis='both', which='major', labelsize='x-large')
+    print(Y)
+    plt.savefig('bar_instance.png')
+    plt.show()
+
+
