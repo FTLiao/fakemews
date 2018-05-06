@@ -265,7 +265,7 @@ def pipeline_test(test, bow_vectorizer, tfreq_vectorizer, tfidf_vectorizer):
             head_tfidf = heads_track[head][1]
         if body_id not in bodies_track:
             body_bow = bow_vectorizer.transform([test.bodies[body_id]]).toarray()
-            body_tf = tfreq_vectorizer.transform(body_bow).toarray()[0].reshape(1, -1)
+            body_tf = tfreq_vec.torizer.transform(body_bow).toarray()[0].reshape(1, -1)
             body_tfidf = tfidf_vectorizer.transform([test.bodies[body_id]]).toarray().reshape(1, -1)
             bodies_track[body_id] = (body_tf, body_tfidf)
         else:
