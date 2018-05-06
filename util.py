@@ -21,6 +21,8 @@ import io
 from csv import DictReader
 from csv import DictWriter
 import numpy as np
+import matplotlib.pyplot as plt
+
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -370,16 +372,16 @@ def set_model_NN(input_output_shape = (12, 4),
     return model
 
 # Plotting for TSNE scattering plot
-def plot_tsne_scattering(X, Y, dic_labels):    
+def plot_tsne_scattering(X, Y, dic_labels, title):    
     fig, ax = plt.subplots(figsize=(10,10))
     #fig.figure(figsize=(8,8))
     colors = ['red', 'green', 'blue','black']
     for i, color in enumerate(colors):
-        idx = Y_embedded==i
+        idx = Y==i
         npts = np.argwhere(idx).shape[0]
-        ax.scatter(X_embedded[idx,0], X_embedded[idx,1], c=color, label=str(npts)+' '+dic_labels[i],
+        ax.scatter(X[idx,0], X[idx,1], c=color, label=str(npts)+' '+dic_labels[i],
                    alpha=0.5, edgecolors='none')
-    
+    ax.set_title(title, fontsize='x-large')
     ax.set_xlabel('arbitrary', fontsize='x-large')
     ax.set_ylabel('arbitrary', fontsize='x-large')
     ax.tick_params(axis='both', which='major', labelsize='x-large')
