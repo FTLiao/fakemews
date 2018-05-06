@@ -333,7 +333,7 @@ def set_model_NN(input_output_shape = (12, 4),
                  activation='relu',
                  loss = 'categorical_crossentropy',
                  metrics = ['categorical_accuracy'],
-                 initializer = 'normal',
+                 initializer = 'glorot_normal',
                  reg_l2 = 0.01,
                  epsilon=1e-6):
     n_input = input_output_shape[0]
@@ -366,7 +366,7 @@ def set_model_NN(input_output_shape = (12, 4),
             model.add(Activation(activation))
         #print(i, node)
     
-    model.add(Dense(n_output, activation='linear'))
+    model.add(Dense(n_output, activation='softmax'))
     model.compile(loss=loss, optimizer='adam', 
                   metrics=metrics)
     return model
