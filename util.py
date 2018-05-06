@@ -368,3 +368,21 @@ def set_model_NN(input_output_shape = (12, 4),
     model.compile(loss=loss, optimizer='adam', 
                   metrics=metrics)
     return model
+
+# Plotting for TSNE scattering plot
+def plot_tsne_scattering(X, Y, dic_labels):    
+    fig, ax = plt.subplots(figsize=(10,10))
+    #fig.figure(figsize=(8,8))
+    colors = ['red', 'green', 'blue','black']
+    for i, color in enumerate(colors):
+        idx = Y_embedded==i
+        npts = np.argwhere(idx).shape[0]
+        ax.scatter(X_embedded[idx,0], X_embedded[idx,1], c=color, label=str(npts)+' '+dic_labels[i],
+                   alpha=0.5, edgecolors='none')
+    
+    ax.set_xlabel('arbitrary', fontsize='x-large')
+    ax.set_ylabel('arbitrary', fontsize='x-large')
+    ax.tick_params(axis='both', which='major', labelsize='x-large')
+    ax.legend(fontsize='x-large')
+    ax.grid(True)
+    plt.show()
