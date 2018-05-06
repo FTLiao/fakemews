@@ -405,4 +405,25 @@ def plot_bar_stance(Y, title = '', dic_stance = label_ref_rev):
     plt.savefig('bar_instance.png')
     plt.show()
 
+# Plotting NN training history
+def plot_NN_training_history(history, title=''):
+    #plt.title(title)
+    #plt.suptitle(title)
+    plt.figure(figsize=(10,5))
+    plt.subplot(1,2,1)
+    plt.plot(history.history['loss'],'r-', label='train')
+    plt.plot(history.history['val_loss'],'b-', label='dev')
+    plt.legend()
+    plt.ylabel('loss')
+    plt.xlabel('epoch')
+    
+    plt.subplot(1,2,2)
+    plt.plot(history.history['categorical_accuracy'],'r-', label='train')
+    plt.plot(history.history['val_categorical_accuracy'],'b-', label='dev')
+    plt.legend()
+    plt.ylabel('categorical_accuracy')
+    plt.xlabel('epoch')
+    #plt.suptitle(title)
+    plt.tight_layout()
+    
 
