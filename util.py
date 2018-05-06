@@ -387,4 +387,6 @@ def plot_tsne_scattering(X, Y, dic_labels, title):
     ax.tick_params(axis='both', which='major', labelsize='x-large')
     ax.legend(fontsize='x-large')
     ax.grid(True)
+    plt.savefig(title+'.png')
     plt.show()
+    
